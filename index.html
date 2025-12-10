@@ -1,47 +1,93 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>湖南2026高考倒计时</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;}
-body{display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#43cea2 0%,#185a9d 100%);color:#fff;text-align:center;}
-h1{font-size:2.2rem;margin-bottom:1rem;text-shadow:0 2px 8px rgba(0,0,0,.3);}
-#box{background:rgba(255,255,255,.15);border-radius:16px;padding:2rem 3rem;backdrop-filter:blur(10px);}
-#countdown{font-size:4rem;font-weight:700;letter-spacing:2px;margin:.5rem 0;}
-footer{position:absolute;bottom:12px;font-size:.9rem;opacity:.8;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>湖南高考倒计时 - 加油！</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/logo.png">
 </head>
 <body>
-<h1>湖南省 2026 年高考倒计时</h1>
-<div id="box">
-  <div id="countdown">加载中…</div>
-</div>
-<footer>@消失的下雨天</footer>
+    <div class="container">
+        <!-- 背景装饰 -->
+        <div class="bg-decoration">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        
+        <!-- 湖南特色元素 -->
+        <div class="hunan-elements">
+            <div class="element yuelu-mountain"></div>
+            <div class="element orange-island"></div>
+        </div>
 
-<script>
-(function(){
-  // 2026 年湖南高考首日上午 9:00（北京时间）
-  const target = new Date('2026-06-07T09:00:00+08:00');
-  const cd = document.getElementById('countdown');
-  function tick(){
-    const now = new Date();
-    const diff = target - now;          // 毫秒
-    if(diff<=0){ cd.textContent = '00 天 00 时 00 分 00 秒'; return; }
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const minutes = Math.floor((diff % 3600000) / 60000);
-    const seconds = Math.floor((diff % 60000) / 1000);
-    cd.textContent =
-      String(days).padStart(2,'0') + ' 天 ' +
-      String(hours).padStart(2,'0') + ' 时 ' +
-      String(minutes).padStart(2,'0') + ' 分 ' +
-      String(seconds).padStart(2,'0') + ' 秒';
-  }
-  tick();
-  setInterval(tick,1000);
-})();
-</script>
+        <!-- 主要内容 -->
+        <main class="main-content">
+            <!-- 头部信息 -->
+            <header class="header">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="湖南高考">
+                    <span>湖南高考加油</span>
+                </div>
+                <div class="date-info">
+                    <p class="current-date" id="currentDate"></p>
+                    <p class="exam-date">2025年高考：6月7日</p>
+                </div>
+            </header>
+
+            <!-- 倒计时区域 -->
+            <section class="countdown-section" id="countdownSection">
+                <h1 class="countdown-title">距离高考还有</h1>
+                <div class="countdown-display" id="countdown">
+                    <div class="time-box">
+                        <span class="number" id="days">00</span>
+                        <span class="label">天</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number" id="hours">00</span>
+                        <span class="label">时</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number" id="minutes">00</span>
+                        <span class="label">分</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="number" id="seconds">00</span>
+                        <span class="label">秒</span>
+                    </div>
+                </div>
+                <p class="countdown-tip">点击倒计时，获取加油能量</p>
+            </section>
+
+            <!-- 进度条 -->
+            <section class="progress-section">
+                <h3>备考进度</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text" id="progressText">已完成85%</p>
+            </section>
+
+            <!-- 励志卡片 -->
+            <section class="motivation-card">
+                <h3>今日目标</h3>
+                <p id="dailyGoal">每天进步一点点，成功就在眼前</p>
+            </section>
+        </main>
+
+        <!-- 底部装饰 -->
+        <footer class="footer">
+            <p>岳麓山下，湘江之滨，湖南学子必创辉煌！</p>
+        </footer>
+    </div>
+
+    <!-- 触摸反馈 -->
+    <div class="touch-effect" id="touchEffect"></div>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
