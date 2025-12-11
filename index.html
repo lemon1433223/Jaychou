@@ -1,47 +1,21 @@
+``html
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-<meta charset="UTF-8">
-<title>湖南2026高考倒计时</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;}
-body{display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#43cea2 0%,#185a9d 100%);color:#fff;text-align:center;}
-h1{font-size:2.2rem;margin-bottom:1rem;text-shadow:0 2px 8px rgba(0,0,0,.3);}
-#box{background:rgba(255,255,255,.15);border-radius:16px;padding:2rem 3rem;backdrop-filter:blur(10px);}
-#countdown{font-size:4rem;font-weight:700;letter-spacing:2px;margin:.5rem 0;}
-footer{position:absolute;bottom:12px;font-size:.9rem;opacity:.8;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高考倒计时</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>湖南省 2026 年高考倒计时</h1>
-<div id="box">
-  <div id="countdown">加载中…</div>
-</div>
-<footer>@消失的下雨天</footer>
-
-<script>
-(function(){
-  // 2026 年湖南高考首日上午 9:00（北京时间）
-  const target = new Date('2026-06-07T09:00:00+08:00');
-  const cd = document.getElementById('countdown');
-  function tick(){
-    const now = new Date();
-    const diff = target - now;          // 毫秒
-    if(diff<=0){ cd.textContent = '00 天 00 时 00 分 00 秒'; return; }
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const minutes = Math.floor((diff % 3600000) / 60000);
-    const seconds = Math.floor((diff % 60000) / 1000);
-    cd.textContent =
-      String(days).padStart(2,'0') + ' 天 ' +
-      String(hours).padStart(2,'0') + ' 时 ' +
-      String(minutes).padStart(2,'0') + ' 分 ' +
-      String(seconds).padStart(2,'0') + ' 秒';
-  }
-  tick();
-  setInterval(tick,1000);
-})();
-</script>
+    <div class="container">
+        <h1>距 2026年6月7日 高考倒计时</h1>
+        <div id="countdown" class="countdown">
+            <!-- 倒计时显示 -->
+        </div>
+        <button id="blessingButton">点击我获取祝福语</button>
+        <div id="blessing" class="blessing"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
